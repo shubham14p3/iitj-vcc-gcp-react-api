@@ -41,6 +41,6 @@ app.get('*', (req, res) => {
 
 app.set('port', process.env.PORT || 8080);
 
-app.listen(app.get('port'), () => {
-  console.log(`Server listening on port ${app.get('port')}`);
+app.listen(app.get('port'), '0.0.0.0', () => {
+  console.log(`Server running on port ${app.get('port')}`);
 });
