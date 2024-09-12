@@ -1,63 +1,29 @@
-/* eslint-disable no-unused-vars */
+const fs = require('fs');
+const path = require('path');
+
 const API = (() => {
-  async function getKey() {
+  const filePath = path.join(__dirname, 'scores.json');
+
+  function readScores() {
+    return JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+  }
+
+  async function postScores(name, score) {
     try {
-      const response = await fetch(
-        'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/',
-        {
-          method: 'POST',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            name: 'DBZ Legend 2D Shooter',
-          }),
-        },
-      );
-      return response;
+      let scores = readScores();
+      scores.push({ user: name, score });
+      fs.writeFileSync(filePath, JSON.stringify(scores, null, 2));
+      return { success: true };
     } catch (error) {
-      return error;
+      return { success: false, error };
     }
   }
 
   async function getScores() {
     try {
-      const scores = await fetch(
-        'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/ShHhUjBgHfAdsM/scores/',
-        {
-          method: 'GET',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          },
-        },
-      );
-      return scores.json();
+      return readScores();
     } catch (error) {
-      return error.json();
-    }
-  }
-
-  async function postScores(name, score) {
-    try {
-      const result = await fetch(
-        'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/ShHhUjBgHfAdsM/scores/',
-        {
-          method: 'POST',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            user: name,
-            score,
-          }),
-        },
-      );
-      return result.json();
-    } catch (error) {
-      return error.json();
+      return { success: false, error };
     }
   }
 
