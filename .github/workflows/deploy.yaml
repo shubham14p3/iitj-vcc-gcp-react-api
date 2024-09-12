@@ -1,0 +1,35 @@
+name: Deploy to GCP VM
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2
+
+      - name: Copy files via SSH
+        uses: appleboy/scp-action@v0.1.1
+        with:
+          host: ${{ secrets.GCP_VM_IP }}
+          username: ${{ secrets.GCP_VM_USER }}
+          key: ${{ secrets.GCP_VM_SSH_KEY }}
+          source: "."
+          target: "/home/iitj-vcc-gcp-react-api/iitj-vcc-gcp-react-api/"
+
+      - name: SSH to GCP VM and restart app
+        uses: appleboy/ssh-action@v0.1.1
+        with:
+          host: ${{ secrets.GCP_VM_IP }}
+          username: ${{ secrets.GCP_VM_USER }}
+          key: ${{ secrets.GCP_VM_SSH_KEY }}
+          script: |
+            cd /home/iitj-vcc-gcp-react-api/iitj-vcc-gcp-react-api
+            git pull origin main
+            npm install
+            pm2 restart all
