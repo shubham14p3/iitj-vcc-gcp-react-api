@@ -1,27 +1,27 @@
-const path = require('path');
+const path = require("path");
 
 module.exports = {
-  entry: './src/index.js',
-
+  entry: "./src/index.js",
+  mode: "development",
   output: {
-    path: path.resolve(__dirname, 'build'),
-    publicPath: '/build/',
-    filename: 'project.bundle.js',
+    path: path.resolve(__dirname, "build"),
+    publicPath: "/build/",
+    filename: "project.bundle.js",
   },
 
   module: {
     rules: [
       {
         test: [/\.vert$/, /\.frag$/],
-        use: 'raw-loader',
+        use: "raw-loader",
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: ["style-loader", "css-loader"],
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
-        use: ['file-loader'],
+        use: ["file-loader"],
       },
     ],
   },

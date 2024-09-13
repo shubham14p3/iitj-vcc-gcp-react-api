@@ -1,29 +1,64 @@
-const fs = require('fs');
-const path = require('path');
 
+/* eslint-disable no-unused-vars */
 const API = (() => {
-  const filePath = path.join(__dirname, 'scores.json');
-
-  function readScores() {
-    return JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-  }
-
-  async function postScores(name, score) {
+  async function getKey() {
     try {
-      let scores = readScores();
-      scores.push({ user: name, score });
-      fs.writeFileSync(filePath, JSON.stringify(scores, null, 2));
-      return { success: true };
+      const response = await fetch(
+        'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/',
+        {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: 'DBZ Legend 2D Shooter',
+          }),
+        },
+      );
+      return response;
     } catch (error) {
-      return { success: false, error };
+      return error;
     }
   }
 
   async function getScores() {
     try {
-      return readScores();
+      const scores = await fetch(
+        'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/ShHhUjBgHfAdsM/scores/',
+        {
+          method: 'GET',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+        },
+      );
+      return scores.json();
     } catch (error) {
-      return { success: false, error };
+      return error.json();
+    }
+  }
+
+  async function postScores(name, score) {
+    try {
+      const result = await fetch(
+        'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/ShHhUjBgHfAdsM/scores/',
+        {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            user: name,
+            score,
+          }),
+        },
+      );
+      return result.json();
+    } catch (error) {
+      return error.json();
     }
   }
 
