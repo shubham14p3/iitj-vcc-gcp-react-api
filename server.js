@@ -1,36 +1,47 @@
 var express = require('express');
 var path = require('path');
-var fs = require('fs');
+var { MongoClient } = require('mongodb');
 var app = express();
-app.use(express.json()); // Middleware for parsing JSON bodies
 
-// Serve static files
+app.use(express.json()); // Middleware for parsing JSON bodies
 app.use(express.static(path.join(__dirname)));
 
+// MongoDB setup
+const mongoUrl = 'mongodb://localhost:27017'; // Change this if you're using MongoDB Atlas
+const dbName = 'gameScoresDB';
+let db;
+
+// Connect to MongoDB
+MongoClient.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then((client) => {
+    db = client.db(dbName);
+    console.log(`Connected to database: ${dbName}`);
+  })
+  .catch((error) => console.error(error));
+
 // API Routes for handling scores
-const scoresFile = path.join(__dirname, 'scores.json');
-app.get('/api/scores', (req, res) => {
+app.get('/api/scores', async (req, res) => {
   try {
-    const data = JSON.parse(fs.readFileSync(scoresFile));
-    res.json(data);
+    const scoresCollection = db.collection('scores');
+    const scores = await scoresCollection.find({}).toArray();
+    res.json(scores);
   } catch (error) {
-    res.status(500).json({ error: 'Error reading scores file' });
+    res.status(500).json({ error: 'Error reading scores from database' });
   }
 });
 
-app.post('/api/scores', (req, res) => {
+app.post('/api/scores', async (req, res) => {
   const { name, score } = req.body;
   if (!name || !score) {
     return res.status(400).json({ error: 'Invalid input' });
   }
 
   try {
-    let scores = JSON.parse(fs.readFileSync(scoresFile));
-    scores.push({ user: name, score });
-    fs.writeFileSync(scoresFile, JSON.stringify(scores, null, 2));
+    const scoresCollection = db.collection('scores');
+    await scoresCollection.insertOne({ user: name, score });
     res.json({ success: true });
   } catch (error) {
-    res.status(500).json({ error: 'Error saving score' });
+    res.status(500).json({ error: 'Error saving score to database' });
   }
 });
 
