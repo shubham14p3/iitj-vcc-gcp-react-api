@@ -127,6 +127,8 @@ Tests were made to test the two modules added to make the Phaser library communi
 If you would like to run the tests yourself, please on the root directory run:
 
 ```
+sudo setcap cap_net_bind_service=+ep `readlink -f \`which node\``
+
 $ npm run test
 ```
 
