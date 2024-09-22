@@ -69,6 +69,17 @@ export default class SceneGameOver extends Phaser.Scene {
 
     Dom.addButtonFunctionality(score);
 
+    // Add the Home button
+    this.homeButton = new Button(
+      this,
+      config.width / 4,
+      config.height / 2,
+      'blueButton1',
+      'blueButton2',
+      'Home',
+      'Title', // Assuming 'Title' is your home screen scene key
+    );
+
     this.submitButton = new Button(
       this,
       config.width / 4,

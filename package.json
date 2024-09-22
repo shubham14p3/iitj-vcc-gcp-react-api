@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack",
     "dev": "npm run build && webpack-dev-server --port=8080",
-    "start": "npm run build && webpack-dev-server && node server.js",
+    "start": "npm run build && webpack-dev-server",
     "dev:server": "concurrently \"node server.js\" \"npm run dev\"",
     "test": "jest",
     "heroku-prebuild": "npm install --dev"

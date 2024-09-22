@@ -13,13 +13,14 @@ router.get('/', async (req, res) => {
 
 // POST: Add a new score
 router.post('/', async (req, res) => {
-  const { name, score } = req.body;
-  if (!name || !score) {
+  const { user, score } = req.body; // Use 'user' instead of 'name'
+  
+  if (!user || typeof score !== 'number') { // Add validation for score to be a number
     return res.status(400).json({ error: 'Invalid input' });
   }
 
   try {
-    await req.db.collection('scores').insertOne({ user: name, score });
+    await req.db.collection('scores').insertOne({ user, score });
     res.json({ success: true });
   } catch (error) {
     res.status(500).json({ error: 'Error saving score to MongoDB' });
