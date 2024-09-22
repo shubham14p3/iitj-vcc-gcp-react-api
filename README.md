@@ -77,10 +77,6 @@
 - Eslint
 - Stylelint
 
-### Deployment
-
-- Express
-- Heroku
 
 ## Getting Started
 
@@ -113,6 +109,23 @@ npm install
 ```
 $ npm run dev
 ```
+Config in GCP
+```
+sudo apt-get update -y
+sudo apt-get install -y nodejs npm -y
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+source ~/.bashrc
+nvm install 18 -y
+nvm use 18 -y
+sudo apt install git  apache2  -y
+git clone https://github.com/shubham14p3/iitj-vcc-gcp-react-api.git
+cd iitj-vcc-gcp-react-api
+npm install
+nano webpack.config.js 
+Uncomment the port 
+sudo setcap cap_net_bind_service=+ep `readlink -f \`which node\``
+npm run dev
+```
 
 - Open [http://localhost:8080/](http://localhost:8080/) on your browser.
 
@@ -127,8 +140,6 @@ Tests were made to test the two modules added to make the Phaser library communi
 If you would like to run the tests yourself, please on the root directory run:
 
 ```
-sudo setcap cap_net_bind_service=+ep `readlink -f \`which node\``
-
 $ npm run test
 ```
 
