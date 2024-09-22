@@ -54,6 +54,14 @@
 - J key => Fire Beam.
 - I key => Picolo arrives.
 
+## Extra Details
+
+[Watch the demo on YouTube](https://youtu.be/2EFk3zxBgEo)
+
+```
+Github : https://github.com/shubham14p3/iitj-vcc-gcp-react-api
+```
+
 ## Game development
 
 | DAYS  |              OBJECTIVE               |                                                                                                                                                                                  DESCRIPTION                                                                                                                                                                                   |                                                                                                                                 OUTCOME                                                                                                                                  | STATUS  |
