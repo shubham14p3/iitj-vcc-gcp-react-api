@@ -1,16 +1,200 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Sahitya:wght@700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <title>DBZ Legend 2D Shooter</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to Heart Disease Prediction</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body, html {
+        height: 100%;
+        font-family: Arial, sans-serif;
+      }
+
+      /* Flexbox layout for centering content */
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 90vh; /* Adjusted to make space for footer */
+        padding: 1rem;
+        background-color: #000000;
+      }
+
+      .card {
+        display: flex;
+        border-radius: 16px;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        width: 80%;
+        max-width: 1200px;
+      }
+
+      /* Left side with IITJ info */
+      .card-left {
+        background-color: #1e3a8a;
+        color: white;
+        flex: 1;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+      }
+
+      .card-left img {
+        width: 80px;
+      }
+
+      .card-left .info {
+        text-align: center;
+      }
+
+      .card-left .info h5 {
+        margin-top: 1rem;
+        font-size: 1.5rem;
+      }
+
+      .card-left .info p {
+        margin-top: 0.5rem;
+      }
+
+      /* Right side with welcome message and button */
+      .card-right {
+        flex: 2;
+        padding: 3rem;
+        background-color: #f0f4c3;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      .card-right h4 {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #1e3a8a;
+      }
+
+      .button {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 2rem;
+        font-size: 18px;
+      }
+
+      .button:hover {
+        background-color: #0056b3;
+      }
+
+      /* Footer styles */
+      footer {
+        background-color: #1e3a8a;
+        color: white;
+        text-align: center;
+        padding: 1rem;
+        position: relative;
+        width: 100%;
+        bottom: 0;
+      }
+
+      footer .authors {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin: 0.5rem 0;
+      }
+
+      footer .author {
+        margin: 0 15px;
+        font-size: 14px;
+      }
+
+      footer .author a {
+        color: white;
+        text-decoration: none;
+        margin-left: 5px;
+      }
+
+      footer .author i {
+        margin-right: 5px;
+      }
+    </style>
   </head>
   <body>
-    <h1 class="title">DBZ Legend 2D Shooter</h1>
-    <script src="build/project.bundle.js" charset="utf-8"></script>
+    <div class="container">
+      <div class="card">
+        <!-- Left side with IITJ info -->
+        <div class="card-left">
+          <img
+            src="https://iitj.ac.in/uploaded_docs/IITJ%20Logo__Small.jpg"
+            alt="IITJ Logo"
+          />
+          <div class="info">
+            <h5>Indian Institute of Technology Jodhpur</h5>
+            <p>Date: <span id="date"></span></p>
+            <h6>Virtualization and Cloud Computing</h6>
+            <p>Assignment 4 (Project)</p>
+          </div>
+        </div>
+
+        <!-- Right side with welcome message and button -->
+        <div class="card-right">
+          <h4>Welcome to VCC Project</h4>
+          <button class="button" onclick="goToGame()">Start</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer with authors -->
+    <footer>
+      <div class="authors">
+        <div class="author">
+          👤 <strong>Shubham Raj</strong><br />
+          <i class="fab fa-github"></i><a href="https://github.com/shubham14p3" target="_blank">GitHub</a> |
+          <i class="fab fa-linkedin"></i><a href="https://www.linkedin.com/in/shubham14p3/" target="_blank">LinkedIn</a>
+        </div>
+
+        <div class="author">
+          👤 <strong>Bhagchandani Niraj</strong><br />
+          <i class="fab fa-github"></i><a href="https://github.com/bhagchandaniniraj" target="_blank">GitHub</a> |
+          <i class="fab fa-linkedin"></i><a href="https://linkedin.com/in/niraj-bhagchandani-218280201" target="_blank">LinkedIn</a>
+        </div>
+
+        <div class="author">
+          👤 <strong>Bhavesh Arora</strong><br />
+          <i class="fab fa-github"></i><a href="https://github.com/bhavesharora02" target="_blank">GitHub</a> |
+          <i class="fab fa-linkedin"></i><a href="https://linkedin.com/in/bhavesh-arora-11b0a319b" target="_blank">LinkedIn</a>
+        </div>
+
+        <div class="author">
+          👤 <strong>Jai Singh Kushwah</strong><br />
+          <i class="fab fa-github"></i><a href="https://github.com/jai12kushwah" target="_blank">GitHub</a> |
+          <i class="fab fa-linkedin"></i><a href="https://linkedin.com/in/jsk21" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Set the current date
+      document.getElementById("date").innerText = new Date().toLocaleDateString();
+
+      // Function to handle the "Start" button click
+      function goToGame() {
+        window.location.href = "index.html"; // Redirect to the game index page
+      }
+    </script>
   </body>
 </html>

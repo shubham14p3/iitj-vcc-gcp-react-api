@@ -137,12 +137,27 @@ $ npm run test
 - Node. If you do not have Node installed in your local machine, please refer to the [Official Documentation](https://nodejs.org/en/download/)
 - Basic command line knowledge.
 
-## Author
+## Authors
 
 👤 **Shubham Raj**
 
 - Github: [@ShubhamRaj](https://github.com/shubham14p3)
-- Linkedin: [Shubham14p3](https://www.linkedin.com/in/shubham14p3/)
+- Linkedin: [Shubham Raj](https://www.linkedin.com/in/shubham14p3/)
+
+👤 **Bhagchandani Niraj**
+
+- Github: [@BhagchandaniNiraj](https://github.com/bhagchandaniniraj)
+- Linkedin: [Niraj Bhagchandani](https://linkedin.com/in/niraj-bhagchandani-218280201)
+
+👤 **Bhavesh Arora**
+
+- Github: [@BhaveshArora](https://github.com/bhavesharora02)
+- Linkedin: [Bhavesh Arora](https://linkedin.com/in/bhavesh-arora-11b0a319b)
+
+👤 **Jai Singh Kushwah**
+
+- Github: [@JaiSinghKushwah](https://github.com/jai12kushwah)
+- Linkedin: [Jai Singh Kushwah](https://linkedin.com/in/jsk21)
 
 ## Future Upgrades
 
