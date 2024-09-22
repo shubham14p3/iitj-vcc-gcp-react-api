@@ -7,6 +7,10 @@
 
 > DBZ is a 2D shooter game inspired by the Dragon Ball Z. The game is browser-based, designed on Phaser 3, and it uses a collection of amazing art by various designers (Please refer to the Acknowledgment section for more information). The objective of the game is to score the highest possible score while defeating the evil Vegeta and Beerus on your way. The main character Goku can call Picolo for help.
 
+## Welcome Screen
+
+![screenshot1](./assets/screenshots/Welcome.JPG)
+
 ## Booting Screen
 
 ![screenshot1](./assets/screenshots/bootingSceen.png)
@@ -17,7 +21,7 @@
 
 ## Credit Screen
 
-![screenshot1](./assets/screenshots/creditScreen.PNG)
+![screenshot1](./assets/screenshots/Creditpage.JPG)
 
 ## Options Screen
 
@@ -29,13 +33,17 @@
 
 ## Top Score Screen
 
-![screenshot1](./assets/screenshots/topScreen.PNG)
+![screenshot1](./assets/screenshots/topscore.JPG)
 
-> For developing the game, I used JavaScript and Phaser 3 along with Express to host it on Heroku. I implemented an API provided by [Microverse](https://www.microverse.org/) to host the scoring database so that the highest scores will always be available for new users to try to beat! The API implementation required the use of promises and Async functions. I also used Classes and Modules to integrate everything in an industry-standard code style while implementing JavaScript, HTML, and CSS best practices.
+## API Call Screen
 
-## Live Version
+![screenshot1](./assets/screenshots/backedresponse.JPG)
 
-[Live Version](https://desolate-depths-73675.herokuapp.com/)
+## UI Memory Screen
+
+![screenshot1](./assets/screenshots/UImemory.JPG)
+
+> For developing the game, I used JavaScript and Phaser 3 along with Express to host it on GCP. I implemented an API provided by GCP VM to host the scoring database so that the highest scores will always be available for new users to try to beat! The API implementation required the use of promises and Async functions. I also used Classes and Modules to integrate everything in an industry-standard code style while implementing JavaScript, HTML, and CSS best practices.
 
 ### Control's
 
@@ -109,7 +117,8 @@ npm install
 ```
 $ npm run dev
 ```
-Config in GCP
+## Config in GCP for UI in VM1
+
 ```
 sudo apt-get update -y
 sudo apt-get install -y nodejs npm -y
@@ -125,8 +134,20 @@ Uncomment the port
 sudo setcap cap_net_bind_service=+ep `readlink -f \`which node\``
 npm run dev
 ```
+## Config in GCP for Backend in VM2
 
-- Open [http://localhost:8080/](http://localhost:8080/) on your browser.
+```
+sudo apt-get update -y
+sudo apt-get install -y nodejs npm -y
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash source ~/.bashrc
+nvm install 18
+nvm use 18
+sudo apt install git  apache2  -y
+git clone https://github.com/shubham14p3/iitj-vcc-gcp-react-api.git
+cd iitj-vcc-gcp-react-api/backend
+npm install
+npm start
+```
 
 Now you are all set to start fighting gainst the dark wizard's forces. Will yo be able to get at the top of the leaderboarrd? Enjoy!
 
@@ -186,7 +207,7 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-- Project requested by [Microverse Program](https://www.microverse.org/).
+- Project requested by [IITJ](https://www.iitj.ac.in/).
 - Game based on the very successful DBZ franchise. All rights reserved to DBZ Team. The use of her property is solely for educational purposes.
 
 <!-- MARKDOWN LINKS & IMAGES -->
