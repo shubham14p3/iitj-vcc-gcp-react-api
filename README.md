@@ -113,10 +113,9 @@ Config in GCP
 ```
 sudo apt-get update -y
 sudo apt-get install -y nodejs npm -y
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-source ~/.bashrc
-nvm install 18 -y
-nvm use 18 -y
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash source ~/.bashrc
+nvm install 18
+nvm use 18
 sudo apt install git  apache2  -y
 git clone https://github.com/shubham14p3/iitj-vcc-gcp-react-api.git
 cd iitj-vcc-gcp-react-api
